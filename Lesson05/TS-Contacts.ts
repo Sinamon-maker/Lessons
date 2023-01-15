@@ -40,15 +40,29 @@ interface User  {
   },
   ];
   
+  const isAdmin = (person: Person):person is Admin => {
+    return  'role' in person;
+  }
+  
+  const isUser = (person: Person): person is User => {
+    return  'group' in person;
+  }
+  
   const logPerson = (person: Person) => {
-    let information: string;
-    if ('role' in person) {
+    let information: string = '';
+    if (isAdmin(person)) {
       information = person.role;
-    } else {
+    }
+    if (isUser(person)) {
       information = person.group;
     }
-    console.log(`${person.name}, ${person.age}, ${information}`);
-  };
+    console.log(` - ${person.name}, ${person.age}, ${information}`);
+  }
+  
+  console.log('Admins:');
+  persons.filter(isAdmin).forEach(logPerson);
+  
+  console.log();
   
   console.log('Users:');
-  persons.forEach(logPerson);
+  persons.filter(isUser).forEach(logPerson);
