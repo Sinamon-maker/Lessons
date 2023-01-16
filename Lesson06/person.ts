@@ -1,4 +1,4 @@
-import Job, {role} from "./job";
+import Job, {jobPlammer, JobBuilder} from "./job";
 
 class Person {
     private _job?: Job;
@@ -8,8 +8,8 @@ class Person {
         this._name = _name
     }
 
-    hireJob(val: role, payment: number){
-        this._job = new Job(val, payment);
+    set job(val: Job){
+        this._job = val;
         
     }
 
@@ -31,6 +31,13 @@ const Ivan: Person = new Person('Ivan')
 
 Ivan.getSalary()
 
-Ivan.hireJob(role.builder, 60_000)
+Ivan.job = JobBuilder
 Ivan.work()
 Ivan.getSalary()
+
+
+const Volodimir: Person = new Person('Volodimir')
+
+Volodimir.job = jobPlammer
+Volodimir.work()
+Volodimir.getSalary()

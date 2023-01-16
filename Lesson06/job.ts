@@ -25,7 +25,9 @@ constructor(_role: role, _salary: number){
 
 }
 
-const job1: Job = new Job(role.plammer, 70_000)
+export const jobPlammer: Job = new Job(role.plammer, 70_000)
 
-console.log(job1.salary)
-job1.work('Petr')
+console.log(jobPlammer.salary)
+jobPlammer.work('Petr')
+
+export const JobBuilder: Job = new Job(role.builder, 60_000)
