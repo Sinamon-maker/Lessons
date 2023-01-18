@@ -1,4 +1,4 @@
-import {User, UsersList} from './user';
+import { UsersList} from './user';
 
 interface Student{
     id: string;
@@ -51,4 +51,6 @@ console.log(students.get('jfuymho21'))
 console.log(students.remove('jfuymho210'))
 
 console.log(students.get('jfuymho21'))
+
+console.log(students.sorted('asc'))
 

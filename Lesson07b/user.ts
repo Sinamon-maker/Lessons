@@ -5,6 +5,8 @@ export interface User {
     age: number;
 }
 
+type sortParam = 'desc' | 'asc'
+
 export abstract class  UsersList <T extends User> {
   protected userList: T[] = [];
 
@@ -28,5 +30,14 @@ export abstract class  UsersList <T extends User> {
 
     public get(id:string):T|null{
         return this.userList.find(it => it.id === id) ?? null
+    }
+
+    public sorted (val?: sortParam):T[]{
+       if(val === 'desc' || !val){
+        const res = this.userList.sort((a,b) => a.age - b.age)
+        return res
+       }
+       const res = this.userList.sort((a,b) => b.age - a.age)
+       return res
     }
 }
