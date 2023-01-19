@@ -47,3 +47,5 @@ employees.remove('jhkhk');
 employees.remove('jhuyiho98')
 
 employees.get('jhuyiho98')
+
+console.log('sorted:', employees.sorted('asc'))

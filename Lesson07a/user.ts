@@ -29,4 +29,13 @@ export abstract class  UsersList <T extends User> {
     public get(id:string):T|null{
         return this.userList.find(it => it.id === id) ?? null
     }
+
+    public sorted(val?: 'asc' | 'desc'): T[]{
+        if(val === 'asc' || !val){
+            const res = this.userList.sort((a, b) => a.age - b.age)
+            return res
+        }
+        const res = this.userList.sort((a, b) => b.age - a.age)
+            return res
+    }
 }

@@ -52,3 +52,5 @@ console.log(students.remove('jfuymho210'))
 
 console.log(students.get('jfuymho21'))
 
+console.log('sorted', students.sorted('desc'))
+
