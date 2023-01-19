@@ -70,18 +70,27 @@ interface User{
     console.log(` - ${person.name}, ${person.age}, ${information}`);
   }
   
-  const filterUsers = (persons: Person[], criteria: Partial<User>): User[] =>
-  persons.filter(isUser).filter((user) => {
-      const criteriaKeys = Object.keys(criteria) as (keyof User)[];
-      return criteriaKeys.every((fieldName) => user[fieldName] === criteria[fieldName]);
+  const filterPersons = (persons: Person[], criteria: Partial<Person>): Person[] =>
+  persons.filter((person) => {
+      const criteriaKeys = Object.keys(criteria) as (keyof Person)[];
+      return criteriaKeys.every((fieldName) => person[fieldName] === criteria[fieldName]);
     });
   
   
   console.log('Users of age 24:');
   
-  filterUsers(
+  filterPersons(
     persons,
     {
         age: 24
+    }
+  ).forEach(logPerson);
+
+  console.log('Admins of age 44:');
+  
+  filterPersons(
+    persons,
+    {
+        age: 44
     }
   ).forEach(logPerson);
